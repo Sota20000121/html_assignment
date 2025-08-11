@@ -238,7 +238,7 @@ body{
     overflow-x: hidden;
 }
 
-h1,img,p{
+h1,h2,img,p{
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -260,7 +260,7 @@ main.show{
 }
 
 .spacer{
-    margin: 100px;
+    margin: 150px;
 }
 
 h1{
@@ -271,6 +271,12 @@ h1{
 
 h2{
     font-size: 2.5em;
+    line-height: 1.125;
+    text-align: left;
+}
+
+h3{
+    font-size: 2em;
     line-height: 1.125;
     text-align: center;
 }
@@ -285,6 +291,7 @@ h2{
 }
 
 .container p{
+    letter-spacing: 0.1em;
     font-size: 20px;
 }
 
@@ -298,12 +305,14 @@ h2{
     flex: 1;
 }
 
+
 .image img{
     width: 100%;
-    max-width: 300px;
+    max-width: 550px;
     height: auto;
     display: block;
-    border-radius: 8px;
+    border-radius: 10px;
+    
 }
 
 .fade-slide{
@@ -315,4 +324,84 @@ h2{
 .fade-slide.active{
     opacity: 1;
     transform: translateY(0);
+}
+
+/* フォトギャラリー */
+.content{
+    width: 500px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.content img{
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 5px rideg #a0a0a0;
+    display: block;
+}
+
+.wrap{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 400px;
+    margin-bottom: 100px;
+}
+
+.slideshow{
+    display: flex;
+    -webkit-animation: loop-slide 20s infinite linear 1s both;
+    animation: loop-slide 20s infinite linear 1s both;
+}
+
+@-webkit-keyframes loop-slide{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+@keyframes loop-slide{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.slide-paused:hover .slideshow{
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+.content-hover{
+    transition: all 0.2s;
+}
+
+.content-hover:hover{
+    transform: translateY(-20px);
+    box-shadow: 0 3px 10px 0 #333;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+ul.slideshow {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex; 
+}
+
+.content-hover {
+    transition: all 0.2s;
+    margin-right: 40px; 
+}
+
+.slideshow li:last-child .content-hover {
+    margin-right: 0; 
 }
